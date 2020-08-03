@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Giacomo Nanni">
+    <meta name="description" content="<?php echo $site->description()->html() ?>">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Giacomo Nanni</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jongacnik/gr8/daaf18fb/dist/gr8.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+
+</head>
+
+<body>
+    <main data-router-wrapper>
+        <header>
+            <div class="bio">
+                <h1> Hi, I’m Giacomo and </h1>
+                <a href="mailto:hello@giacomonanni.info" target="_blank" id="description"></a>
+            </div>
+            <div class="description">
+                <p>
+                    I transform spreadsheets into graphics.
+                    <br>Just like <a
+                        href="https://docs.google.com/spreadsheets/d/1hfAlK19jjv289tL022mMWQbzAejOVsmQSAxD3MFBemI/edit?usp=sharing"
+                        target="_blank">this one</a>.
+                    <br><br>I’m an information designer with a strong passion for critical
+                    cartography and internet geographies. I’m particularly interested in questioning the ethics of
+                    machine
+                    learning systems and to create my own datasets.
+                    <br>I occasionally develop my own tools to do graphic design, or to
+                    gather information from the internet.
+                </p>
+                <p>
+                    With a focus on data visualisations I work with museums, universities and institutions.
+
+                    Currently, I am collaborating with Chialab(IT) and Airwars(UK).
+                    <br><br>
+
+                    Apart from that, i photograph weird <a href="http://instagram.com/sinanatra"
+                        target="_blank">food</a> and i
+                    share <a href="https://album.giacomonanni.info/" target="_blank">music</a> with my brother on a
+                    weekly basis.
+                    If you are interested in this random nonsense, feel free to write me <a
+                        href="mailto:hello@giacomonanni.info">digitally</a> or <a href="./print">physically</a>.
+                </p>
+                <br><br>
+                <div>
+                    <a href="https://github.com/sinanatra" target="_blank">Github</a><br><br>
+                </div>
+
+            </div>
+        </header>
+
+        <script>
+            $(function () {
+                var s = new Array();
+                s.push("I really like spending time with Sara.");
+                s.push("my mom makes the best tortellini.");
+                s.push("this sandwich has no mayonnaise.");
+                s.push("I think that graphic design is overrated.");
+                s.push("pizza hawaii is kawaii.");
+                s.push("I do like cooofffeee.");
+                s.push("I only eat junk food.");
+                s.push("ha en hyggelig kveld!");
+                s.push("hellooooooooo.");
+                s.push("bonjourrrrrr.");
+                s.push("I'm from Bologna, Italy.");
+                s.push("I'm currently back home.");
+                s.push("click here!");
+                s.push("five miles south of the Canadian border, twelve miles west of the state line");
+                s.push("fuck you.");
+                s.push("I feel bored already.");
+                s.push("I feel relaxed.");
+                s.push("why don't you click here?");
+                s.push("yes! You're the 1 millionth visitor.");
+                s.push("click here to enlarge your penis.");
+                s.push("cook me like one of your french fries.");
+                s.push("I drink cheap beer, so what.");
+                s.push("I just like liking things.");
+                s.push("I'm currenlty 🚽 🚽 🚽.");
+                s.push("skrrt skrrt.");
+                s.push("tú mataste a mi padre. Prepárate a morir.");
+                s.push("if it works it’s not broken.");
+                s.push("I don't agree with everything i say.");
+                s.push("bad coffee is better than no coffee.");
+                s.push("mondays are so mundane.");
+                s.push("Francesco call me sometimes.");
+                s.push("a pneumothorax hurts.");
+                s.push("I love you.");
+                s.push("why are you here?");
+                s.push("linearity leads only to decay and death.");
+                s.push("il gainsboro è un colore veneto.");
+                s.push("aàbcdeèéfghiìjklmnoòpqrstuùüvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+•—-_,. ");
+                s.push("👨 🎐 ⬛️ 🚊 📉 👼 📷 🍏 😓 🕥 💌 ⏭ 🏜 😈 💷 💊 ☄ 🌆 💺 🌏 🏰 🌍 🍬 🐻 ℹ️ 🛏 ⛔️ 🍮 ☘ ⌨🦁 🏰 🔈 🆗 🎪 🍞 🏖 👆 🏓 👉 📼 👳 🐵 ☔️ 🌋");
+
+                var phrase = document.getElementById("description");
+                var t = setInterval(step, 100);
+                var passaggi;
+                var current = -1;
+                swap();
+
+                function step() {
+                    if (mode == 0) {
+                        var end = s[current].length;
+                        var start = end - passaggi - 1;
+                        phrase.innerHTML = s[current].slice(start, end);
+                        passaggi++;
+                        if (passaggi == s[current].length) {
+                            mode++;
+                            passaggi = 0;
+                        }
+                    } else if (mode == 1) {
+                        passaggi++;
+                        if (passaggi == 80) swap();
+                    }
+                }
+
+                function swap() {
+                    do {
+                        var r = Math.floor(Math.random() * s.length);
+                    } while (r == current);
+                    current = r;
+                    passaggi = 0;
+                    mode = 0;
+                    phrase.innerHTML = "";
+                }
+            });
+        </script>
+
+
+
+        <script src="//d3js.org/d3.v3.min.js"></script>
+        <article>
+            <div class="svgContainer">
+                <svg viewBox="0 -20 1030.15 670.38">
+                    <g id="various" class="various">
+                        <circle cx="864.61" cy="590" r="56.73" />
+                    </g>
+                    <g id="taxonomies" class="on_taxonomies">
+                        <circle cx="120.52" cy="93.82" r="56.96" />
+                    </g>
+                    <g class="cartography">
+                        <ellipse cx="755.54" cy="296.53" rx="274.36" ry="296.28" />
+                    </g>
+                    <g class="interactive">
+                        <ellipse cx="488.51" cy="353.83" rx="312.31" ry="268.51" />
+                    </g>
+
+                    <g class="critical_cartography">
+                        <ellipse cx="755.54" cy="296.53" rx="274.36" ry="174.53" />
+                    </g>
+                    <g class="machine_learning">
+                        <ellipse cx="225.47" cy="385.42" rx="225.22" ry="136.52" />
+                    </g>
+                    <g id="internet_geography" class="internet_geography">
+                        <ellipse class="dashed" cx="568.18" cy="296.53" rx="57.93" ry="84.6" />
+                    </g>
+                    <g class="ethics" id="ethics">
+                        <ellipse class="dashed" cx="352.17" cy="387.25" rx="57.93" ry="78.91" />
+                    </g>
+                    <g class="database">
+                        <ellipse cx="353.37" cy="462.21" rx="114.95" ry="177.92" />
+                    </g>
+                    <g class="website" id="website">
+                        <circle class="dashed" cx="405.91" cy="190.47" r="70"></circle>
+                    </g>
+                    <!-- Hidden contaiƒners -->
+                    <g class="hide" id="cartography">
+                        <ellipse cx="753.11" cy="58.5" rx="138" ry="48" />
+                    </g>
+                    <g class="hide" id="database">
+                        <circle class="hide" cx="355.91" cy="560.47" r="65.41" />
+                    </g>
+
+                    <g class="hide" id="interactive">
+                        <circle class="hide" cx="520" cy="550.47" r="85"></circle>
+                    </g>
+
+                    <g class="hide" id="machine_learning">
+                        <circle class="hide" cx="85.91" cy="380.47" r="75.41" />
+                    </g>
+                    <g class="hide" id="critical_cartography">
+                        <circle cx="891.11" cy="289.75" r="95.37" />
+                    </g>
+                    <g class="hide" id="critical_cartography_interactive">
+                        <ellipse class="hide" cx="700.11" cy="289.75" rx="71" ry="90.72" />
+                    </g>
+
+
+                </svg>
+            </div>
+        </article>
+
+
+        <?php snippet('footer') ?>
+        <script>
+            d3.json("https://spreadsheets.google.com/feeds/list/1hfAlK19jjv289tL022mMWQbzAejOVsmQSAxD3MFBemI/od6/public/values?alt=json", function (error, json) {
+                if (error) return console.log(error);
+
+                var result = json.feed.entry;
+                console.log(result)
+
+                const margin = 20;
+
+                // Insert caption to the bigger circles or ellipses
+                let elementContainer = d3.selectAll('g')[0]
+                elementContainer.forEach((bigCircle) => {
+                    if (bigCircle.className.baseVal !== 'hide') {
+                        d3.select('svg').append("foreignObject")
+                            .attr("height", "20px")
+                            .attr("width", "200px")
+                            .attr("class", "label")
+                            .attr("dy", ".35em")
+                            .attr('stroke', 'none')
+                            .html("<p>" + bigCircle.className.baseVal.replace('_', ' ') + "</p>")
+                            .attr('x', bigCircle.firstElementChild.getAttribute('cx') - 100)
+                            .attr('y', function () {
+                                if (bigCircle.firstElementChild.tagName == 'circle') {
+                                    return (Number(bigCircle.firstElementChild.getAttribute('cy')) - Number(bigCircle.firstElementChild.getAttribute('r')) - 10)
+                                } else if (bigCircle.firstElementChild.tagName == 'ellipse') {
+                                    return (Number(bigCircle.firstElementChild.getAttribute('cy')) - Number(bigCircle.firstElementChild.getAttribute('ry')) - 10)
+                                }
+                            })
+                    }
+                });
+
+                // Create the diagram
+                result.forEach((line) => {
+                    let source = line.gsx$source.$t
+                    let category = line.gsx$category.$t.replace(' ', '_').split(',')
+                    let cat = line.gsx$category.$t.replace(/ /g, '_')
+                    let title = line.gsx$title.$t
+
+                    try {
+                        let className = d3.select("#" + cat)[0][0].id;
+
+                        if (cat == className) {
+                            let thisElement = d3.select("#" + cat)
+                            thisElement
+                                .append('a')
+                                .attr("xlink:href", source)
+                                .attr("target", "_blank")
+                                .append('circle')
+                                .data(category)
+                                .attr('class', cat)
+                                .attr("cx", function () {
+                                    let mainCircle = this.parentElement.parentElement.firstElementChild
+                                    if (mainCircle.tagName === 'circle') {
+                                        let cx = Number(mainCircle.getAttribute('cx'))
+                                        let r = Number(mainCircle.getAttribute('r')) - margin
+                                        let a = Math.random() * 2 * Math.PI; // angle
+                                        let radius = Math.sqrt(~~(Math.random() * r * r)); // distance from the center 
+                                        let x = cx + radius * Math.cos(a);
+                                        return x
+                                    } else if (mainCircle.tagName === 'ellipse') {
+                                        let cx = Number(mainCircle.getAttribute('cx'))
+                                        let r = Number(mainCircle.getAttribute('rx')) - margin
+                                        let a = Math.random() * 2 * Math.PI; // angle
+                                        let radius = Math.sqrt(~~(Math.random() * r * r)); // distance from the center 
+                                        let x = cx + radius * Math.cos(a);
+                                        return x
+                                    }
+                                })
+                                .attr("cy", function () {
+                                    let mainCircle = this.parentElement.parentElement.firstElementChild
+
+                                    if (mainCircle.tagName === 'circle') {
+                                        let cy = Number(mainCircle.getAttribute('cy'))
+                                        let r = Number(mainCircle.getAttribute('r')) - margin
+                                        let a = Math.random() * 2 * Math.PI; // angle
+                                        let radius = Math.sqrt(~~(Math.random() * r * r)); // distance from the center 
+                                        let y = cy + radius * Math.sin(a);
+                                        return y
+                                    } else if (mainCircle.tagName === 'ellipse') {
+                                        let cy = Number(mainCircle.getAttribute('cy'))
+                                        let r = Number(mainCircle.getAttribute('ry')) - margin
+                                        let a = Math.random() * 2 * Math.PI; // angle
+                                        let radius = Math.sqrt(~~(Math.random() * r * r)); // distance from the center 
+                                        let y = cy + radius * Math.sin(a);
+                                        return y
+                                    }
+                                })
+                                .attr("r", 5)
+                                .on("mouseover", showTextHover)
+                                .on("mouseout", removeTextHover)
+
+                            function showTextHover() {
+                                // Insert caption to the inner circles
+                                thisElement.append("foreignObject")
+                                    .attr("height", "50px")
+                                    .attr("width", "350px")
+                                    .attr("class", "captionTitle")
+                                    .attr("position", "fixed")
+                                    .attr('stroke', 'none')
+                                    .html("<p>" + title + "</p>")
+                                    .attr('x', 10)
+                                    .attr('y', -10)
+                                    .attr("text-align", "center")
+                            }
+
+                            function removeTextHover() {
+                                d3.selectAll(".captionTitle").remove()
+                            }
+
+
+                        }
+                    } catch { }
+                })
+
+
+
+            })
+        </script>
