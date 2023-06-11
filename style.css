@@ -21,3 +21,7 @@ circle {
 a circle, text {
     fill: var(--highlite-color);
 }
+
+.hide {
+    display: none;
+}
